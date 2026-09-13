@@ -174,7 +174,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const quickSwitchUser = async (username: 'demo-player' | 'jugador1' | 'admin') => {
     const passwords: Record<string, string> = {
-      demo-player: 'demo-player-password-change-me',
+      'demo-player': 'demo-player-password-change-me',
       jugador1: 'demo-player-password-change-me',
       admin: 'demo-admin-password-change-me',
     };
