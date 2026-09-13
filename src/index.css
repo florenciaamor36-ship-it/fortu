@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cinzel', serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #060a14;
+    color: #f1f5f9;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-cinzel {
+    font-family: var(--font-serif);
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Custom Gold & Navy Utilities */
+.bg-navy-950 {
+  background-color: #060a14;
+}
+
+.bg-navy-900 {
+  background-color: #0a101f;
+}
+
+.bg-navy-800 {
+  background-color: #0f182e;
+}
+
+.bg-navy-700 {
+  background-color: #16223e;
+}
+
+.border-navy-700 {
+  border-color: #1e2c4d;
+}
+
+.border-navy-600 {
+  border-color: #273963;
+}
+
+.text-gold-300 {
+  color: #f5e4be;
+}
+
+.text-gold-400 {
+  color: #dfb76c;
+}
+
+.text-gold-500 {
+  color: #c5a059;
+}
+
+.border-gold-500\/30 {
+  border-color: rgba(197, 160, 89, 0.3);
+}
+
+.border-gold-500\/50 {
+  border-color: rgba(197, 160, 89, 0.5);
+}
+
+.bg-gold-500 {
+  background-color: #c5a059;
+}
+
+.bg-gold-600 {
+  background-color: #b38e47;
+}
+
+/* Subtle gold foil shine */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fcebc7 0%, #dfb76c 50%, #b88d3e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-btn {
+  background: linear-gradient(180deg, #dfb76c 0%, #c5a059 50%, #ac873d 100%);
+  color: #080c16;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.gold-gradient-btn:hover {
+  background: linear-gradient(180deg, #e7c580 0%, #d1ab62 50%, #b89145 100%);
+}
+
+.gold-border-glow {
+  box-shadow: 0 0 15px -3px rgba(197, 160, 89, 0.18);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #070c18;
+}
+::-webkit-scrollbar-thumb {
+  background: #1c2a47;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c5a059;
+}
