@@ -1,0 +1,6 @@
+{
+  "name": "La CLave Argentina casinos",
+  "description": "Plataforma oficial de casino virtual en Argentina con sistema de fichas, máquinas tragamonedas, ruletas, bingos, apuestas deportivas y panel administrativo con cifrado.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
