@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from './context/AuthContext';
 import { api } from './services/api';
 import { CasinoGame, GameCategory } from './types';
+import { DEMO_GAMES } from './demoGames';
 import { Header } from './components/Header';
 import { JackpotTicker } from './components/JackpotTicker';
 import { HeroFeatured } from './components/HeroFeatured';
@@ -104,7 +105,11 @@ export default function App() {
         const featured = res.games.find((g) => g.featured) || res.games[0];
         setFeaturedGame(featured);
       } catch (err) {
-        console.error('Error fetching games:', err);
+        // GitHub Pages serves the visual demo without the Express API.
+        // Keep the lobby useful and honest instead of showing an empty catalog.
+        console.warn('API no disponible; usando catálogo local de demostración.', err);
+        setGames(DEMO_GAMES);
+        setFeaturedGame(DEMO_GAMES.find((g) => g.featured) || DEMO_GAMES[0]);
       } finally {
         setIsLoadingGames(false);
       }
