@@ -291,49 +291,30 @@ export default function App() {
           />
         )}
 
-        {/* 6. Why Play at La Clave Argentina (Trust, Security, Argentine Chips) */}
+        {/* 6. Alcance verificable de esta demo */}
         <section className="bg-gradient-to-br from-[#091224] via-[#0d1a33] to-[#091224] border-2 border-[#1c2d4e] rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+          <div className="mb-6 max-w-2xl">
+            <span className="text-[10px] uppercase tracking-[0.22em] text-[#c5a059] font-bold">Estado del producto</span>
+            <h3 className="font-cinzel text-xl font-bold text-slate-100 mt-2">Una base visual lista para conectar después</h3>
+            <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+              Esta versión sirve para revisar navegación, catálogo y juegos de demostración. No procesa dinero real ni afirma servicios que todavía no fueron conectados o auditados.
+            </p>
+          </div>
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Feature 1 */}
             <div className="bg-[#070e1c]/80 border border-[#1a2b48] rounded-2xl p-5 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-[#12203c] border border-[#c5a059]/50 flex items-center justify-center text-[#dfb76c]">
-                <Coins className="w-5 h-5" />
-              </div>
-              <h4 className="font-cinzel font-bold text-sm text-slate-100">
-                Sistema de Fichas Oficial
-              </h4>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Operamos sin pasarelas bancarias invasivas ni intermediarios extranjeros. Tus fichas se
-                cargan y canjean directamente a través del Cajero Oficial en pesos argentinos.
-              </p>
+              <div className="w-10 h-10 rounded-xl bg-[#12203c] border border-[#c5a059]/50 flex items-center justify-center text-[#dfb76c]"><Coins className="w-5 h-5" /></div>
+              <h4 className="font-cinzel font-bold text-sm text-slate-100">Catálogo y fichas demo</h4>
+              <p className="text-xs text-slate-400 leading-relaxed">Juegos de muestra, saldo virtual y navegación por categorías. Las operaciones de caja están deshabilitadas.</p>
             </div>
-
-            {/* Feature 2 */}
             <div className="bg-[#070e1c]/80 border border-[#1a2b48] rounded-2xl p-5 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-[#12203c] border border-[#c5a059]/50 flex items-center justify-center text-[#dfb76c]">
-                <ShieldCheck className="w-5 h-5" />
-              </div>
-              <h4 className="font-cinzel font-bold text-sm text-slate-100">
-                Cifrado & Ledger SHA-256
-              </h4>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Base de datos protegida con cadena de bloques inmutable y algoritmo Provably Fair.
-                Cada tirada de tragamonedas o ruleta cuenta con firma criptográfica auditada.
-              </p>
+              <div className="w-10 h-10 rounded-xl bg-[#12203c] border border-[#c5a059]/50 flex items-center justify-center text-[#dfb76c]"><ShieldCheck className="w-5 h-5" /></div>
+              <h4 className="font-cinzel font-bold text-sm text-slate-100">Conexiones pendientes</h4>
+              <p className="text-xs text-slate-400 leading-relaxed">El backend autoritativo, la persistencia, el RNG de servidor y las auditorías todavía deben implementarse y verificarse.</p>
             </div>
-
-            {/* Feature 3 */}
             <div className="bg-[#070e1c]/80 border border-[#1a2b48] rounded-2xl p-5 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-[#12203c] border border-[#c5a059]/50 flex items-center justify-center text-[#dfb76c]">
-                <Award className="w-5 h-5" />
-              </div>
-              <h4 className="font-cinzel font-bold text-sm text-slate-100">
-                Exclusivo para Argentina
-              </h4>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Diseñado exclusivamente para el apostador argentino: fútbol de Primera División,
-                temáticas criollas, soporte en vivo 24/7 y acreditación ultra veloz de premios.
-              </p>
+              <div className="w-10 h-10 rounded-xl bg-[#12203c] border border-[#c5a059]/50 flex items-center justify-center text-[#dfb76c]"><Award className="w-5 h-5" /></div>
+              <h4 className="font-cinzel font-bold text-sm text-slate-100">Juego responsable</h4>
+              <p className="text-xs text-slate-400 leading-relaxed">La interfaz incluye avisos de demo y juego responsable. No debe usarse para apuestas ni premios reales.</p>
             </div>
           </div>
         </section>
@@ -352,11 +333,10 @@ export default function App() {
                 <span>LA CLAVE ARGENTINA</span>
               </div>
               <p className="text-[11px] text-slate-500 leading-relaxed">
-                Plataforma de entretenimiento virtual y casino online en pesos argentinos con sistema de
-                fichas propio y registro de transacciones con cifrado de grado militar.
+                Demo visual de entretenimiento con fichas virtuales. No procesa pagos, retiros ni premios reales.
               </p>
               <div className="text-[10px] text-[#c5a059] font-mono">
-                Versión 3.5.0 • Ledger SHA-256 Activo
+                Demo • backend y auditoría pendientes
               </div>
             </div>
 
@@ -409,30 +389,30 @@ export default function App() {
               </ul>
             </div>
 
-            {/* Security & Ledger */}
+            {/* Estado técnico verificable */}
             <div className="space-y-2.5">
               <div className="font-cinzel font-bold text-slate-200 text-xs uppercase tracking-wider">
-                Seguridad & Cifrado
+                Estado técnico
               </div>
               <ul className="space-y-1.5 text-[11px] text-slate-400">
                 <li className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Cadena Hash SHA-256</span>
+                  <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Demo visual, no producción</span>
                 </li>
                 <li className="flex items-center gap-1.5">
-                  <Lock className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Cifrado E2EE de Jugadas</span>
+                  <Lock className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Backend y pagos no conectados</span>
                 </li>
                 <li className="flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Algoritmo Provably Fair</span>
+                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                  <span>RNG demo no auditado</span>
                 </li>
                 <li>
                   <button
                     onClick={() => setIsAdminOpen(true)}
                     className="text-[#dfb76c] underline hover:text-[#fae5b8]"
                   >
-                    Acceso Administrativo
+                    Abrir panel administrativo
                   </button>
                 </li>
               </ul>
