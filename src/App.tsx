@@ -61,7 +61,7 @@ export default function App() {
     const adminParam = params.get('panel');
     const cashierParam = params.get('cajero');
     const cParam = cashierParam;
-    if (adminParam === 'admin') {
+    if (adminParam === 'admin' || adminParam === 'gamecreator' || adminParam === 'assetforge') {
       setIsAdminOpen(true);
     }
     if (cParam) {
