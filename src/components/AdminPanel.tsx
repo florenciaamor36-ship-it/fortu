@@ -3,7 +3,6 @@ import { useAuth } from '../context/AuthContext';
 import { api } from '../services/api';
 import { User, Transaction, GameRoundHistory, ChipRequest, CashierPanel, DualDatabaseStatus, CasinoGame } from '../types';
 import { DualDatabaseTab } from './admin/DualDatabaseTab';
-import { GameCreatorTab } from './admin/GameCreatorTab';
 import { CashiersManagementTab } from './admin/CashiersManagementTab';
 import { AssetForgeTab } from './admin/AssetForgeTab';
 import {
@@ -34,7 +33,6 @@ import {
   KeyRound,
   FileSpreadsheet,
   Database,
-  Sparkles,
   Server,
   HardDrive,
   Cpu,
@@ -54,10 +52,9 @@ export const AdminPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     | 'transactions'
     | 'gamehistory'
     | 'database'
-    | 'gamecreator'
     | 'assetforge'
     | 'broadcast'
-  >(new URLSearchParams(window.location.search).get('panel') === 'gamecreator' ? 'gamecreator' : 'overview');
+  >('overview');
 
   const [metrics, setMetrics] = useState<any>(null);
   const [users, setUsers] = useState<User[]>([]);
@@ -465,7 +462,6 @@ export const AdminPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             { id: 'boveda', label: '⚡ Bóveda & Emisión Ilimitada', icon: Zap },
             { id: 'cajeros', label: `Sub-Páneles de Cajeros (${cashiers.length})`, icon: Landmark },
             { id: 'database', label: 'Dual DB & Caché L1 (Cuotas)', icon: Database },
-            { id: 'gamecreator', label: '+1000 Juegos (Contenedor)', icon: Sparkles },
             { id: 'assetforge', label: '🎨 Game Studio & AI Forge', icon: Wand2 },
             { id: 'users', label: 'Gestión de Usuarios & Saldos', icon: Users },
             {
@@ -1018,35 +1014,6 @@ export const AdminPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               onForceSync={handleForceSync}
               onSwitchTarget={handleSwitchDbTarget}
               onRefresh={loadDbStatus}
-            />
-          )}
-
-          {/* TAB: DYNAMIC GAME CONTAINERS (+1000 GAMES) */}
-          {activeTab === 'gamecreator' && (
-            <GameCreatorTab
-              existingGames={games}
-              isCreating={isCreatingGame}
-              onSubmit={handleCreateCustomGame}
-              title={newGameTitle}
-              setTitle={setNewGameTitle}
-              subtitle={newGameSubtitle}
-              setSubtitle={setNewGameSubtitle}
-              category={newGameCategory}
-              setCategory={setNewGameCategory}
-              skinId={newGameSkinId}
-              setSkinId={setNewGameSkinId}
-              rtp={newGameRtp}
-              setRtp={setNewGameRtp}
-              minBet={newGameMinBet}
-              setMinBet={setNewGameMinBet}
-              maxBet={newGameMaxBet}
-              setMaxBet={setNewGameMaxBet}
-              volatility={newGameVolatility}
-              setVolatility={setNewGameVolatility}
-              thumbnail={newGameThumbnail}
-              setThumbnail={setNewGameThumbnail}
-              features={newGameFeatures}
-              setFeatures={setNewGameFeatures}
             />
           )}
 
