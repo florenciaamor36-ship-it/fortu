@@ -17,7 +17,7 @@ export const GameStudioPanel: React.FC<{ onClose: () => void }> = ({ onClose }) 
   const [audioFormat, setAudioFormat] = useState('mp3');
 
   const addAssets = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(event.target.files || []);
+    const files = Array.from(event.target.files || []) as File[];
     const newAssets = files.map((file) => ({
       id: `${file.name}-${file.lastModified}`,
       file,
