@@ -13,6 +13,7 @@ import { PlayableBingoModal } from './components/PlayableBingoModal';
 import { CashierModal } from './components/CashierModal';
 import { CashierOperatorModal } from './components/CashierOperatorModal';
 import { AdminPanel } from './components/AdminPanel';
+import { GameStudioPanel } from './components/GameStudioPanel';
 import { AuthModal } from './components/AuthModal';
 import { NotificationsDrawer } from './components/NotificationsDrawer';
 import {
@@ -46,6 +47,7 @@ export default function App() {
   const [isCashierOpen, setIsCashierOpen] = useState(false);
   const [isCashierOperatorOpen, setIsCashierOperatorOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [isGameStudioOpen, setIsGameStudioOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
 
   // Active game modal
@@ -61,8 +63,11 @@ export default function App() {
     const adminParam = params.get('panel');
     const cashierParam = params.get('cajero');
     const cParam = cashierParam;
-    if (adminParam === 'admin' || adminParam === 'gamecreator' || adminParam === 'assetforge') {
+    if (adminParam === 'admin' || adminParam === 'assetforge') {
       setIsAdminOpen(true);
+    }
+    if (adminParam === 'gamecreator') {
+      setIsGameStudioOpen(true);
     }
     if (cParam) {
       setCashierSlugParam(cParam);
@@ -483,6 +488,9 @@ export default function App() {
 
       {/* 10. Admin Panel */}
       {isAdminOpen && <AdminPanel onClose={() => setIsAdminOpen(false)} />}
+
+      {/* 10.1 Independent Game Studio Panel */}
+      {isGameStudioOpen && <GameStudioPanel onClose={() => setIsGameStudioOpen(false)} />}
 
       {/* 11. Auth Modal */}
       <AuthModal
