@@ -87,7 +87,23 @@ La plataforma incluye un **Estudio de Creación y Procesamiento Universal** acce
 
 ---
 
-## 🚀 5. Instrucciones de Despliegue para Agentes Autónomos y CI/CD
+## 🔌 5. Puntos de conexión preparados (cables pendientes)
+
+La interfaz y el backend quedan desacoplados para conectar después los servicios reales sin rehacer el panel:
+
+- `VITE_API_BASE_URL`: URL del backend que consume el frontend.
+- `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`: persistencia y almacenamiento privado.
+- `STORAGE_BUCKET`: carpeta/bucket de assets por juego.
+- `MEDIA_PROCESSOR_URL`: servicio que ejecutará Sharp/FFmpeg/Web Audio para recortes, fondos, transcodificación y fotogramas.
+- `CORS_ORIGIN`: origen permitido del frontend.
+- `SESSION_SECRET`: secreto obligatorio de sesión, solo en variables del hosting.
+- `server/mediaPipeline.ts`: contrato `MediaProcessor` y adaptador temporal para conectar el procesador real.
+
+Flujo previsto: el panel sube el archivo → el backend valida tipo y tamaño → almacenamiento privado guarda el original → el procesador genera la salida → se registra `outputKey` dentro de `games/<gameId>/...` → el lobby consume únicamente assets publicados.
+
+GitHub Pages solo sirve la maqueta estática: no procesa ni guarda archivos de forma permanente. Estos cables quedan preparados, pero no se consideran conectados hasta verificar backend, almacenamiento y procesador con pruebas reales.
+
+## 🚀 6. Instrucciones de Despliegue para Agentes Autónomos y CI/CD
 
 ### Prerrequisitos del Sistema
 - **Node.js**: v18.0.0 o superior (Recomendado v20+ LTS)
