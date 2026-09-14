@@ -64,17 +64,17 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-40 w-full bg-[#070d1a]/95 backdrop-blur-md border-b border-[#1c2842]">
-      {/* Top micro-bar: Security, E2EE, Argentine Regulatory & Demo switcher */}
+      {/* Estado visible de demo: no promete servicios conectados ni dinero real. */}
       <div className="bg-[#050811] text-[11px] text-slate-400 py-1.5 px-4 border-b border-[#141d30]">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-3">
             <span className="inline-flex items-center gap-1 text-[#c5a059] font-medium">
               <ShieldCheck className="w-3.5 h-3.5 text-[#c5a059]" />
-              Demo: transporte seguro depende del despliegue
+              Modo demo: fichas virtuales
             </span>
             <span className="hidden sm:inline text-slate-600">•</span>
             <span className="hidden sm:inline text-slate-400">
-              Operación con Sistema de Fichas Oficial • Argentina 2025
+              Backend, pagos y retiros todavía no están conectados
             </span>
             <span className="hidden md:inline text-slate-600">•</span>
             <span className="hidden md:inline px-1.5 py-0.5 rounded text-[10px] bg-[#0d233a] text-[#70a9d4] border border-[#1e4268]">
