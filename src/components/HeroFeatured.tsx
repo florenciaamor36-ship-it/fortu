@@ -46,7 +46,7 @@ export const HeroFeatured: React.FC<HeroFeaturedProps> = ({
               JUEGO DESTACADO DE LA SEMANA
             </span>
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#11243e] text-[#70a9d4] border border-[#234571]">
-              Exclusivo Argentina
+              Temática local · demo
             </span>
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono text-emerald-400 bg-emerald-950/40 border border-emerald-800/40">
               RTP {game.rtp}%
@@ -99,15 +99,15 @@ export const HeroFeatured: React.FC<HeroFeaturedProps> = ({
             </button>
           </div>
 
-          {/* Proof seals */}
-          <div className="pt-2 flex items-center gap-5 text-xs text-slate-400">
+          {/* Alcance honesto de la demo */}
+          <div className="pt-2 flex flex-wrap items-center gap-5 text-xs text-slate-400">
             <div className="flex items-center gap-1.5">
               <Shield className="w-4 h-4 text-[#c5a059]" />
-              <span>Cifrado SHA-256 Inalterable</span>
+              <span>Modo demo, sin dinero real</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Zap className="w-4 h-4 text-[#70a9d4]" />
-              <span>Pagos Instantáneos en Fichas</span>
+              <span>Fichas virtuales locales</span>
             </div>
           </div>
         </div>
