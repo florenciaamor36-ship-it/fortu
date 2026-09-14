@@ -15,6 +15,16 @@ export const GameStudioPanel: React.FC<{ onClose: () => void }> = ({ onClose }) 
   const [removeBackground, setRemoveBackground] = useState(false);
   const [videoFrames, setVideoFrames] = useState(false);
   const [audioFormat, setAudioFormat] = useState('mp3');
+  const [tool, setTool] = useState<'image' | 'video' | 'audio' | 'sandbox'>('image');
+  const [cropWidth, setCropWidth] = useState(512);
+  const [cropHeight, setCropHeight] = useState(512);
+  const [cropOffset, setCropOffset] = useState(0);
+  const [backgroundTolerance, setBackgroundTolerance] = useState(18);
+  const [trimStart, setTrimStart] = useState(0);
+  const [trimEnd, setTrimEnd] = useState(5);
+  const [outputFormat, setOutputFormat] = useState('webm');
+  const [volume, setVolume] = useState(100);
+  const [loop, setLoop] = useState(false);
 
   const addAssets = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files || []) as File[];
@@ -123,6 +133,34 @@ export const GameStudioPanel: React.FC<{ onClose: () => void }> = ({ onClose }) 
               <button type="button" onClick={() => removeAsset(asset.id)} className="text-slate-500 hover:text-red-400"><Trash2 size={15} /></button>
             </div>)}</div>}
             <p className="mt-4 flex items-center gap-2 text-[11px] text-amber-200"><Wand2 size={14} /> La demo permite seleccionar y previsualizar archivos; la conversión real, quitar fondo y exportación a fotogramas requieren el backend/procesador.</p>
+          </section>
+          <section className="mb-8 rounded-2xl border border-[#1c2d4e] bg-[#0b1426] p-5">
+            <div className="mb-4 flex flex-wrap gap-2">
+              {(['image', 'video', 'audio', 'sandbox'] as const).map((item) => <button key={item} type="button" onClick={() => setTool(item)} className={`rounded-lg px-3 py-2 text-xs font-semibold ${tool === item ? 'bg-[#c5a059] text-black' : 'bg-[#111e38] text-slate-300'}`}>{item === 'image' ? '🖼️ Editor de imágenes' : item === 'video' ? '🎞️ Video y fotogramas' : item === 'audio' ? '🔊 Audio y sintetizador' : '🎮 Sandbox multijuego'}</button>)}
+            </div>
+            {tool === 'image' && <div className="grid gap-3 md:grid-cols-4">
+              <label className="text-xs text-slate-300">Ancho<input type="number" value={cropWidth} onChange={(e) => setCropWidth(Number(e.target.value))} className="mt-1 w-full rounded-lg bg-[#070d1a] p-2 text-white" /></label>
+              <label className="text-xs text-slate-300">Alto<input type="number" value={cropHeight} onChange={(e) => setCropHeight(Number(e.target.value))} className="mt-1 w-full rounded-lg bg-[#070d1a] p-2 text-white" /></label>
+              <label className="text-xs text-slate-300">Offset<input type="number" value={cropOffset} onChange={(e) => setCropOffset(Number(e.target.value))} className="mt-1 w-full rounded-lg bg-[#070d1a] p-2 text-white" /></label>
+              <label className="text-xs text-slate-300">Tolerancia fondo<input type="number" value={backgroundTolerance} onChange={(e) => setBackgroundTolerance(Number(e.target.value))} className="mt-1 w-full rounded-lg bg-[#070d1a] p-2 text-white" /></label>
+              <p className="text-[11px] text-slate-400 md:col-span-4">Recorte de símbolos, cartas y elementos visuales con umbral configurable para fondos sólidos.</p>
+            </div>}
+            {tool === 'video' && <div className="grid gap-3 md:grid-cols-4">
+              <label className="text-xs text-slate-300">Inicio (seg.)<input type="number" min="0" value={trimStart} onChange={(e) => setTrimStart(Number(e.target.value))} className="mt-1 w-full rounded-lg bg-[#070d1a] p-2 text-white" /></label>
+              <label className="text-xs text-slate-300">Fin (seg.)<input type="number" min="0" value={trimEnd} onChange={(e) => setTrimEnd(Number(e.target.value))} className="mt-1 w-full rounded-lg bg-[#070d1a] p-2 text-white" /></label>
+              <label className="text-xs text-slate-300">Salida<select value={outputFormat} onChange={(e) => setOutputFormat(e.target.value)} className="mt-1 w-full rounded-lg bg-[#070d1a] p-2 text-white"><option>webm</option><option>spritesheet</option><option>mp4</option></select></label>
+              <label className="flex items-end gap-2 pb-2 text-xs text-slate-300"><input type="checkbox" checked={videoFrames} onChange={(e) => setVideoFrames(e.target.checked)} /> Extraer fotogramas</label>
+              <p className="text-[11px] text-slate-400 md:col-span-4">Trimmer para animaciones, exportación WebM con alfa o Sprite Sheet para el motor del juego.</p>
+            </div>}
+            {tool === 'audio' && <div className="grid gap-3 md:grid-cols-4">
+              <label className="text-xs text-slate-300">Inicio (seg.)<input type="number" min="0" value={trimStart} onChange={(e) => setTrimStart(Number(e.target.value))} className="mt-1 w-full rounded-lg bg-[#070d1a] p-2 text-white" /></label>
+              <label className="text-xs text-slate-300">Fin (seg.)<input type="number" min="0" value={trimEnd} onChange={(e) => setTrimEnd(Number(e.target.value))} className="mt-1 w-full rounded-lg bg-[#070d1a] p-2 text-white" /></label>
+              <label className="text-xs text-slate-300">Volumen (%)<input type="number" min="0" max="200" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="mt-1 w-full rounded-lg bg-[#070d1a] p-2 text-white" /></label>
+              <label className="flex items-end gap-2 pb-2 text-xs text-slate-300"><input type="checkbox" checked={loop} onChange={(e) => setLoop(e.target.checked)} /> Repetir en bucle</label>
+              <p className="text-[11px] text-slate-400 md:col-span-4">Recorte de efectos, volumen, bucles y formato para sonidos de giro, cartas, fichas y premios.</p>
+            </div>}
+            {tool === 'sandbox' && <div className="grid gap-3 sm:grid-cols-4"><button className="rounded-xl bg-[#111e38] p-4 text-left text-xs text-white">🎰 Tragamonedas<br /><span className="text-slate-400">Probar símbolos y sonidos</span></button><button className="rounded-xl bg-[#111e38] p-4 text-left text-xs text-white">🎡 Ruleta<br /><span className="text-slate-400">Probar mesa y efectos</span></button><button className="rounded-xl bg-[#111e38] p-4 text-left text-xs text-white">🃏 Blackjack<br /><span className="text-slate-400">Probar cartas y reparto</span></button><button className="rounded-xl bg-[#111e38] p-4 text-left text-xs text-white">🚀 Crash<br /><span className="text-slate-400">Probar animaciones</span></button><p className="text-[11px] text-slate-400 sm:col-span-4">Sandbox de prueba con saldo demo para revisar los recursos antes de publicarlos.</p></div>}
+            <p className="mt-4 text-[11px] text-amber-200">Estas herramientas siguen la estructura indicada en el README. La exportación persistente requiere el procesador del backend.</p>
           </section>
           {message && <div className="mb-4 rounded-xl border border-[#c5a059]/40 bg-[#20170a] px-4 py-3 text-sm text-[#fae5b8]">{message}</div>}
           <GameCreatorTab
