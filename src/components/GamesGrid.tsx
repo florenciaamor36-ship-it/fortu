@@ -51,15 +51,15 @@ export const GamesGrid: React.FC<GamesGridProps> = ({
   const getSectionTitle = () => {
     switch (currentCategory) {
       case 'slots':
-        return 'Máquinas Tragamonedas de Alta Ganancia';
+        return 'Máquinas Tragamonedas Demo';
       case 'ruleta':
-        return 'Ruletas Europeas & En Vivo';
+        return 'Ruletas de Demostración';
       case 'bingo':
-        return 'Salones de Bingo Criollo & Videobingo';
+        return 'Salones de Bingo Demo';
       case 'apuestas':
-        return 'Apuestas Deportivas en Vivo';
+        return 'Sección deportiva demo';
       case 'destacados':
-        return 'Juegos Destacados y Pozos Millonarios';
+        return 'Juegos destacados de la demo';
       default:
         return 'Catálogo General de Juegos';
     }
@@ -75,7 +75,7 @@ export const GamesGrid: React.FC<GamesGridProps> = ({
             {getSectionTitle()}
           </h2>
           <p className="text-xs md:text-sm text-slate-400 mt-1">
-            Mostrando {filteredGames.length} juegos optimizados con sistema oficial de fichas
+            Mostrando {filteredGames.length} juegos de demostración con fichas virtuales
           </p>
         </div>
 
