@@ -58,9 +58,15 @@ export default function App() {
   // Detect URL parameter ?cajero=slug or ?panel=slug
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const cParam = params.get('cajero') || params.get('panel');
+    const adminParam = params.get('panel');
+    const cashierParam = params.get('cajero');
+    const cParam = cashierParam;
+    if (adminParam === 'admin') {
+      setIsAdminOpen(true);
+    }
     if (cParam) {
       setCashierSlugParam(cParam);
+      setIsCashierOperatorOpen(true);
       api
         .getPublicCashierPanel(cParam)
         .then((res) => {
