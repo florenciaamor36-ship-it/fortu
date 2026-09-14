@@ -57,7 +57,7 @@ export const AdminPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     | 'gamecreator'
     | 'assetforge'
     | 'broadcast'
-  >('overview');
+  >(new URLSearchParams(window.location.search).get('panel') === 'gamecreator' ? 'gamecreator' : 'overview');
 
   const [metrics, setMetrics] = useState<any>(null);
   const [users, setUsers] = useState<User[]>([]);
