@@ -27,11 +27,11 @@ export const JackpotTicker: React.FC = () => {
         <div className="flex items-center gap-3 shrink-0">
           <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#1c1408] border border-[#c5a059]/40 text-[#dfb76c] text-xs font-semibold">
             <Flame className="w-3.5 h-3.5 text-[#dfb76c] animate-pulse" />
-            <span>POZO ACUMULADO ARGENTINA</span>
+            <span>INDICADOR DE DEMO</span>
           </div>
 
           <div className="flex items-baseline gap-1.5 font-mono">
-            <span className="text-xs text-[#c5a059] font-bold">FICHAS</span>
+            <span className="text-xs text-[#c5a059] font-bold">FICHAS DEMO</span>
             <span className="text-base md:text-xl font-black text-[#fae5b8] tracking-tight">
               ${totalJackpot.toLocaleString('es-AR')}
             </span>
@@ -42,7 +42,7 @@ export const JackpotTicker: React.FC = () => {
         <div className="flex items-center gap-2 overflow-hidden w-full md:w-auto text-xs">
           <div className="flex items-center gap-1 text-slate-400 shrink-0 font-medium">
             <Trophy className="w-3.5 h-3.5 text-[#c5a059]" />
-            <span className="hidden sm:inline">Últimos Premios:</span>
+            <span className="hidden sm:inline">Ejemplos de demo:</span>
           </div>
 
           <div className="flex items-center gap-4 overflow-x-auto no-scrollbar py-0.5">
